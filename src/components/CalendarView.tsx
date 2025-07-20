@@ -7,7 +7,7 @@ import type { Event,CalendarViewProps } from '../types/event';
 import AddToGoogleCalendar from '../components/AddToGoogleCalendar';
 
 const CalendarView = ({ events }: CalendarViewProps) => {
-  const { user } = useUser();
+  const { user, loading } = useUser();
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
 
@@ -24,6 +24,9 @@ const CalendarView = ({ events }: CalendarViewProps) => {
   }, [events, user]);
 
   useEffect(() => {
+
+    if (loading || !user) return;
+
     const matches = visibleEvents.filter(
       (event) =>
         format(new Date(event.date), 'yyyy-MM-dd') ===

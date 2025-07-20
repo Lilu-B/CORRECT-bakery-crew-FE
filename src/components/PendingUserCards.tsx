@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useUser } from '../context/UserContext';
 import { fetchPendingUsers, approveUserById, deleteUserById } from '../api/pendingUsers';
 import type { User } from '../types/user';
 
 const PendingUserCards = () => {
+  const { user, loading: userLoading } = useUser();
   const [pendingUsers, setPendingUsers] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [pendingLoading, setPendingLoading] = useState(true);
 
   const loadUsers = async () => {
     try {
@@ -13,13 +15,14 @@ const PendingUserCards = () => {
     } catch (err) {
       console.error('Error loading pending users:', err);
     } finally {
-      setLoading(false);
+      setPendingLoading(false);
     }
   };
 
   useEffect(() => {
+    if (userLoading || !user || (user.role !== 'manager' && user.role !== 'developer')) return;
     loadUsers();
-  }, []);
+  }, [user, userLoading]);
 
   const handleApprove = async (id: number) => {
     try {
@@ -39,7 +42,7 @@ const PendingUserCards = () => {
     }
   };
 
-  if (loading) return <p>Loading pending users...</p>;
+  if (pendingLoading) return <p>Loading pending users...</p>;
 
   return (
     <section aria-labelledby="pending-users-heading">

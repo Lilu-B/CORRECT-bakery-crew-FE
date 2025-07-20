@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { Routes, Route } from 'react-router-dom'; 
 import ProtectedRoute from './routes/ProtectedRoute';
 import Layout from './components/Layout';
 import Login from './pages/Login';
@@ -15,7 +15,6 @@ import DonationCreate from './pages/DonationCreate';
 
 const App = () => {
   return (
-    <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -32,7 +31,6 @@ const App = () => {
       {/* <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} /> */}
         </Route>
       </Routes>
-    </Router>
   );
 };
 

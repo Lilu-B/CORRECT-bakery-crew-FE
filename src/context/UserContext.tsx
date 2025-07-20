@@ -19,7 +19,7 @@ export interface User {
 interface UserContextType {
   user: User | null;
   setUser: (user: User | null) => void;
-  logout: () => void;
+  logout: () => Promise<void>; 
   loading: boolean; 
 }
 
@@ -29,10 +29,17 @@ export const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const logout = () => {
+  const logout = async () => {
+  try {
+    await api.delete('/logout'); 
+  } catch (err) {
+    console.error('Logout error', err);
+  } finally {
     setUser(null);
     sessionStorage.removeItem('token');
-  };
+    console.log('✅ User logged out');
+  }
+};
 
   useEffect(() => {
     let isMounted = true; 
@@ -46,9 +53,11 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         }
         })
         .catch((err: AxiosError<{ message?: string }>) => {
-          const message = err.response?.data?.message || 'Session expired. Please log in again.';
-          alert(message);
-          logout();
+          if (err.response?.status === 401 || err.response?.status === 403) {
+            logout();
+          } else {
+            console.error('Unexpected error loading user:', err);
+          }
         })
         .finally(() => {
           if (isMounted) setLoading(false);
