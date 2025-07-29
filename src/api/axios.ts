@@ -3,8 +3,11 @@ import camelcaseKeys from 'camelcase-keys';
 
 const api = axios.create({
   baseURL: '/api',   // for local run!
-  withCredentials: true
-  // baseURL: 'https://bakery-crew-be.onrender.com/api'  // for production
+    // baseURL: 'https://bakery-crew-be.onrender.com/api'  // for production
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json'
+  }
 });
 
 api.interceptors.request.use((config) => {

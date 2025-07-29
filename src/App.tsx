@@ -11,7 +11,9 @@ import EventCreate from './pages/EventCreate';
 import Donations from './pages/Donations';
 import DonationDetails from './pages/DonationDetails';
 import DonationCreate from './pages/DonationCreate';
-// import Messages from './pages/Messages';
+import Messages from './pages/Messages';
+import MessageCreate from './pages/MessageCreate';
+import MessageDetails from './pages/MessageDetails';
 
 const App = () => {
   return (
@@ -28,7 +30,9 @@ const App = () => {
           <Route path="/donations" element={<Donations />} />
           <Route path="/donations/create" element={<DonationCreate />} />
           <Route path="/donations/:donationId" element={<DonationDetails />} />
-      {/* <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} /> */}
+          <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
+          <Route path="/messages/create" element={<ProtectedRoute><MessageCreate /></ProtectedRoute>} />
+          <Route path="/messages/:messageId" element={<ProtectedRoute><MessageDetails /></ProtectedRoute>} />
         </Route>
       </Routes>
   );

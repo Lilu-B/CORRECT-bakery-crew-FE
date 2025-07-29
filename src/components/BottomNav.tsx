@@ -7,8 +7,8 @@ const BottomNav = () => {
   const navItems = [
     { path: '/', label: '🏠', ariaLabel: 'Home' },
     { path: '/events', label: '📅', ariaLabel: 'Events' },
-    { path: '/donations', label: '🐷', ariaLabel: 'Donations' }
-    // { path: '/messages', label: '💬', ariaLabel: 'Messages' }
+    { path: '/donations', label: '🐷', ariaLabel: 'Donations' },
+    { path: '/messages', label: '💬', ariaLabel: 'Messages' }
   ];
 
   return (
