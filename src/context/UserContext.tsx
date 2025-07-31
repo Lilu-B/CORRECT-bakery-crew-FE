@@ -36,14 +36,14 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     console.error('Logout error', err);
   } finally {
     setUser(null);
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
     console.log('✅ User logged out');
   }
 };
 
   useEffect(() => {
     let isMounted = true; 
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     if (token && !user) {
       api.get('/protected')

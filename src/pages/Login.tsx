@@ -23,9 +23,14 @@ function Login() {
     try {
 console.log('🔐 Login handler triggered');
       const res = await api.post('/login', { email, password });
-console.log('✅ Login success, token:', res.data.token);
+      
+      if (import.meta.env.MODE !== 'production') {
+        console.log('Login success, token:', res.data.token);
+        localStorage.setItem('token', res.data.token);
+      } else {
+        console.log('Login success. Cookie was set.');
+      }
 
-      sessionStorage.setItem('token', res.data.token); 
       const profile = await api.get('/protected');   
       const normalizedUser = profile.data;
       setUser(normalizedUser as User);  

@@ -2,7 +2,7 @@ import axios from 'axios';
 import camelcaseKeys from 'camelcase-keys';
 
 const api = axios.create({
-  baseURL: '/api',   // for local run!
+  baseURL: '/api',   // for local run + production on server!
     // baseURL: 'https://bakery-crew-be.onrender.com/api'  // for production
   withCredentials: true,
   headers: {
@@ -11,7 +11,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  const token = sessionStorage.getItem('token');
+  const token = localStorage.getItem('token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
