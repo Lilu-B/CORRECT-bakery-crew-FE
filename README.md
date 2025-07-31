@@ -1,5 +1,8 @@
 # 🧁 Bakery Crew Hub — Frontend
 
+This project is fully deployed and available for testing online:
+👉 [Live Demo](https://bakeryhub.app.freepixel.dev)
+
 A mobile-friendly web app for a bakery team.  
 Team members can view their shift, apply for overtime, contribute to donations, send messages, and see upcoming events.
 
@@ -270,7 +273,7 @@ App runs at:
 ## 🔗 Backend Integration
 
 Connected to:  
-🔗 https://github.com/Lilu-B/bakery-crew-BE
+🔗 https://github.com/Lilu-B/CORRECT-bakery-crew-BE
 
 - Axios uses `/api` with proxy to `localhost:3001`
 - Tested endpoints:
@@ -372,9 +375,3 @@ Connected to:
 - Donation confirmation & payment flow - Stripe integration for real donation
 - Role-based admin dashboard
 
----
-
-## 🔗 Backend
-
-This project connects to the backend repository:  
-https://github.com/Lilu-B/bakery-crew-BE

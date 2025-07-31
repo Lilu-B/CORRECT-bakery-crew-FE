@@ -126,7 +126,7 @@ return (
             <option value="">-- Select your shift --</option>
             <option value="1st">1st</option>
             <option value="2nd">2nd</option>
-            <option value="night">Night</option>
+            {/* <option value="night">Night</option> */}
           </select>
         </div>
 

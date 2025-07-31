@@ -4,6 +4,7 @@ import api from '../api/axios';
 import type { AxiosError } from 'axios';
 import { useUser } from '../context/UserContext';
 import type { User } from '../context/UserContext';
+import WelcomeNotice from '../components/WelcomeNotice';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -51,6 +52,7 @@ console.log('🔐 Login handler triggered');
 
   return (
   <div className="main-content">
+    <WelcomeNotice />
     <section className="card" aria-labelledby="login-heading">
       <h2 id="login-heading">Login</h2>
 
