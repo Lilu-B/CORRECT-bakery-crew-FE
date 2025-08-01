@@ -33,7 +33,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     return setError('Description cannot exceed 500 characters');
   }
 
-  const formattedDate = new Date(date).toISOString();
+  const formattedDate = date;
 
   try {
     await createEvent({
